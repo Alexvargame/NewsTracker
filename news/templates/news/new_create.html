@@ -1,0 +1,45 @@
+﻿{% extends 'news/base_news.html'%}
+{% load rest_framework %}
+ 
+	<h1>HI</h1>
+ 
+{% block title %}
+		
+	Create New
+{% endblock %}
+
+
+{% block content %}
+<div class="features">
+	<style>
+		table {
+ 		 font-family: arial, sans-serif;
+ 		 border-collapse: collapse;
+ 		 width: 30%;
+		}
+
+		td, th {
+  		border: 1px solid #dddddd;
+  		text-align: left;
+  		padding: 8px;
+		}
+
+		tr:nth-child(even) {
+  		background-color: #dddddd;
+		}
+	</style>
+	<form action="" method='post'>
+		{% csrf_token %}
+	 {%render_form serializer%}
+
+<button type="submit" class="btn btn-primary">Сохранить</button>
+	
+
+	
+        </form>
+{{s}}</br>
+
+</div>
+{% endblock %} 
+
+<!--{flat.get_absolute_url}-->

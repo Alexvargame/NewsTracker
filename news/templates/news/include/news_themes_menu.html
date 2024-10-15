@@ -1,0 +1,15 @@
+﻿{% load news_tags %}
+{% load mptt_tags %}
+
+<ul>
+    {% recursetree news_themes %}
+        <li>
+            <a href="{% url 'news_table_url' slug=node.slug%}">{{node.name}}</a>
+            {% if not node.is_leaf_node %}
+                <ul class="children">
+                   <a href="{% url 'news_table_url' slug='sport'%}"> {{ children }}</a>
+                </ul>
+            {% endif %}
+        </li>
+    {% endrecursetree %}
+</ul>

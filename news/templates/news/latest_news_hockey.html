@@ -1,0 +1,5 @@
+﻿<ul>
+ {% for new in latest_news_hockey %}
+ <li><a href="{{new.read_all_url }}">{{ new.title }}</a></li>
+ {% endfor %}
+</ul>

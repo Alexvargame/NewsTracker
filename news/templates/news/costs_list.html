@@ -1,0 +1,69 @@
+﻿
+{% extends 'costs/base_costs.html'%}
+ {% load costs_tags %}
+	<h1>HI</h1>
+ 
+{% block title %}
+		
+	Costs
+{% endblock %}
+ {% load costs_tags %}
+
+{% block content %}
+	<div class="features">
+	<style>
+		table {
+ 		 font-family: arial, sans-serif;
+ 		 border-collapse: collapse;
+ 		 width: 100%;
+		
+		}
+
+		td, th {
+  		border: 1px solid #dddddd;
+  		text-align: left;
+  		padding: 2px;
+		heigth: 5px;
+		}
+
+		tr:nth-child(even) {
+  		background-color: #dddddd;
+		}
+	</style>
+
+	<table>
+  		<tr>
+			 <th style="width:50%">Новость</th>
+			 <th style="width:3%">Название</th>
+			 <th style="width:3%">Дата</th>
+
+
+			 <th style="width:3%">Сумма</th>
+		 
+		 
+  		 </tr>
+	
+	
+		
+	{% for cos in cost%}
+		<tr>
+		 <td style="font-size:80%;"><a href="{{cos.get_absolute_url}}">{{cos.cost_name}}</td>
+		 <td style="font-size:80%;">{{cos.category}}</td>
+		 <td style="font-size:80%;">{{cos.cost_date}}</td>    		 
+	 	 <td style="font-size:80%;">{{cos.cost_sum}}</td>
+		
+	{% endfor %}
+	
+	
+	</table>
+{{s}}
+Кол-во позиций {% total_costs%}</br>
+
+ 		<a class="btn btn-info" href="{%url 'cost_front_create_url'%}" role="button">Добавить расход</a>
+		<a class="btn btn-info" href="{%url 'cost_many_front_create_url'%}" role="button">Добавить расходы</a>
+ {% include "pagination.html" with page=cost %}
+</div>
+{% endblock %} 
+
+	        
+<!--{flat.get_absolute_url}-->

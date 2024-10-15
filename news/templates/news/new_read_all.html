@@ -1,0 +1,64 @@
+﻿{% extends 'news/base_news.html'%}
+{% load mptt_tags %}
+{% load rest_framework %}
+{% load news_tags %}
+
+	<h1>HI</h1>
+
+{% block title %}
+
+	News_Text
+{% endblock %}
+<style>
+		table {
+ 		 font-family: arial, sans-serif;
+ 		 border-collapse: collapse;
+ 		 width: 100%;
+		}
+
+		td, th {
+  		border: 1px solid #dddddd;
+  		text-align: left;
+  		padding: 8px;
+		}
+
+		tr:nth-child(even) {
+  		background-color: #dddddd;
+		}
+	</style>
+
+{% block content %}
+	<div class="features">
+		<h2 style="color:black;">{{new.title}}</h2>
+		 <div class="card" style="width: 70rem;background-color: #dddddd;color:#2c2c2c;">
+			 <div class="card-header">
+				 <table style="width:100%">`
+					 <tr>
+					 <th style="width:10%;text-align: center">{{new.body}}</th>
+					 </tr>
+					 <tr>
+						 <th style="width:10%">
+							 <h6p>Тэги:</h6p>
+							 {% for tag in new.tags.all %}
+								<a href="{% url 'news_tags_list_url' pkk=tag.id%}">{{tag.title}}</a>
+							 {% endfor %}
+						 </th>
+					 </tr>
+				 </table>
+			 </div>
+		 </div>
+		{%show_comments_to_news pk=new.id%}
+		<a href="" style="color:black;font-size:10px">Все комментарии</a>
+		{% include 'news/add_comments.html' %}
+			<a class="btn btn-light" href="{% url 'news_list_url' %}">Вернуться к списку</a>
+	</div>
+
+
+<!--	<form action="{% url 'add_comments_url' pk=new.id%}" method='post'>
+		{% csrf_token %}
+	 	{%render_form serializer_comments%}
+
+		<button type="submit" class="btn btn-primary" href="{% url 'add_comments_url' pk=new.id%}">Отправить</button>
+	</form>-->
+{% endblock %}
+<!--{flat.get_absolute_url}-->

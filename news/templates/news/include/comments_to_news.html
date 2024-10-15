@@ -1,0 +1,29 @@
+﻿{% load news_tags %}
+{% load mptt_tags %}
+<ul>
+    {% recursetree comments %}
+       <li style="border:solid;border-width: 1pt;" >
+           <a href="{%url 'comments_author_url' username=node.author.username%}" style="text-align:left;color:black;font-size:15px;position:relative; left: 330pt">{{node.author}}</a>
+           <h6 style="text-align:justify;color:black;">{{node.date_create}}</h6>
+           <h5 style="text-align:justify;color:black;">{{node.name}}</h5>
+           <p style="text-align:justify;color:black;">{{node.text}}</p>
+
+        <!--<a href="" style="text-align:left;">Ответить</a>-->
+            {% if not node.is_leaf_node %}
+                <ul class="children">
+                   <p> {{ children }}</p>
+                </ul>
+            {% endif %}
+        </li>
+    {% endrecursetree %}
+</ul>
+
+<!-- <li>
+           {{node.text}}
+            <a href="" style="text-align:justify;">{{node.text}}</a>
+            {% if not node.is_leaf_node %}
+                <ul class="children">
+                   <a href=""> {{ children }}</a>
+                </ul>
+            {% endif %}
+        </li>-->

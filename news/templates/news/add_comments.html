@@ -1,0 +1,9 @@
+﻿{% load rest_framework %}
+
+	<form action="{% url 'add_comments_url' pk=new.id%}" method='post'>
+		{% csrf_token %}
+	 	{%render_form serializer_comments%}
+
+		<button type="submit" class="btn btn-primary" href="{% url 'add_comments_url' pk=new.id%}">Отправить</button>
+	</form>
+

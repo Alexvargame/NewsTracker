@@ -1,0 +1,53 @@
+﻿{% extends 'costs/base_costs.html'%}
+ 
+	<h1>HI</h1>
+ 
+{% block title %}
+		
+	Costs
+{% endblock %}
+
+
+{% block content %}
+<div class="features">
+	<div class="card" style="width: 50rem;background-color: #dddddd;color:#2c2c2c;">
+	{{cost.user}}</br>
+ 	 <div class="card-header">
+	
+  	  Информация по объекту
+ 	 </div>
+	 Общая
+  	
+ 	 <ul class="list-group list-group-flush">
+ 	 
+	  <li class="list-group-item">Категория-{{cost.category}}</li>
+	  <li class="list-group-item">Дата-{{cost.cost_date}}</a></li>
+	  <li class="list-group-item">Название-{{cost.cost_name}}</a></li>
+	  <li class="list-group-item">Сумма-{{cost.cost_sum}}</a></li>
+  	  	
+{{s}}
+	</div>
+
+	
+{% if request.user.is_authenticated %}
+<div class="obj-panel">
+	<p>Выбрать</p>
+	 {% block obj-panel%}
+		<a class="btn btn-light" href="{{cost.get_update_url}}">Редактировать</a>
+		<a class="btn btn-danger" href="{{cost.get_delete_url}}">Del</a>
+		<a class="btn btn-light" href="{%url 'costs_front_list_url'%}">Вернуться к списку</a>
+	 {%endblock%}
+</div>
+{% endif%}
+
+
+
+
+<br>
+{{s1}}
+<br>
+</div>
+
+{% endblock %} 
+
+	        

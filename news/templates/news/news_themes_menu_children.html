@@ -1,0 +1,6 @@
+﻿{% load news_tags %}
+<ul>
+ {% for theme in news_themes_children %}
+ <li><a href="{% show_news_themes_menu_children pk=theme.id %}">{{ theme.name }}</a></li>
+ {% endfor %}
+</ul>

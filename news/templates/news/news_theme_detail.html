@@ -1,0 +1,54 @@
+﻿{% extends 'news/base_news.html'%}
+ 
+	<h1>HI</h1>
+ 
+{% block title %}
+		
+	Theme
+{% endblock %}
+
+
+{% block content %}
+<div class="features">
+	<div class="card" style="width: 50rem;background-color: #dddddd;color:#2c2c2c;">
+ 	 <div class="card-header">
+		Пользователь-{{user}}
+ 	 </div>
+	 
+  	 {{newstheme.name}}
+	
+	</div>
+{{s}}
+	
+{% if request.user.is_authenticated %}
+
+
+
+<div class="obj-panel">
+	<p>Выбрать</p>
+	 {% block obj-panel%}
+		<a class="btn btn-light" href="{{newstheme.get_update_url}}">Редактировать</a>
+		<a class="btn btn-danger" href="{{newstheme.get_delete_url}}">Del</a>
+		<a class="btn btn-light" href="{% url 'news_themes_list_url' %}">Вернуться к списку</a>
+	 {%endblock%}
+	</div>
+{% endif%}
+
+
+
+
+<br>
+{{s1}}
+<br>
+
+</div>
+
+{% endblock %} 
+
+<!--{% for fl in flat.items %}
+		
+		<h4>{{fl.label}}</h4>
+		<p>{{fl}}</p>
+	{% endfor %}
+-->
+

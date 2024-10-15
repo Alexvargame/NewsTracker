@@ -1,0 +1,22 @@
+﻿{% extends 'news/base_news.html'%}
+
+ 
+{% block title %}
+		
+	Delete News Theme
+{% endblock %}
+
+
+{% block content %}
+<div class="features">
+
+	<form action="{{newstheme.get_delete_url}}" method='post'>
+		{% csrf_token %}
+	<h3>Вы уверены, что хотите удалить объект?<b>"{{newstheme.id}}"</b></h3>
+	<a href="{{newstheme.get_absolute_url}}">Отменить</a>
+	<button type="submit" class="btn btn-danger">Удалить</button>
+	</form>
+	
+</div>
+{% endblock %} 
+

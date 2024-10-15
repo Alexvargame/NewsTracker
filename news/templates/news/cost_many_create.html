@@ -1,0 +1,59 @@
+﻿{% extends 'costs/base_costs.html'%}
+
+ 
+	<h1>HI</h1>
+ 
+{% block title %}
+		
+	Create Cost
+{% endblock %}
+
+
+{% block content %}
+	<style>
+		table {
+ 		 font-family: arial, sans-serif;
+ 		 border-collapse: collapse;
+ 		 width: 70%;
+		}
+
+		td, th {
+  		border: 1px solid #dddddd;
+  		text-align: left;
+  		padding: 8px;
+		}
+
+		tr:nth-child(even) {
+  		background-color: #dddddd;
+		}
+	</style>
+	<form action="{{cost.get_absolute_url}}" method='post' enctype="multipart/form-data">
+
+		{{form}}
+
+	<div class="form-group" style="width:70%">
+		{% csrf_token %}
+
+		<table style="width:140%">
+			<tr>
+				 <td>Наименование</td>
+				 <td>Сумма</td>
+			 </tr>
+			{{ formset.management_form }}
+			{% for form in formset%}
+			 <tr>
+				 <td style="width:80%">{{form.cost_name}}</td>
+				 <td style="width:50%">{{form.cost_sum}}</td>
+			</tr>
+			{%endfor%}
+		</table>
+
+		<button type="submit" class="btn btn-primary">Сохранить</button>
+	
+	</div>
+	
+        </form>
+{{s}}</br>
+
+
+{% endblock %} 

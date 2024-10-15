@@ -1,0 +1,51 @@
+﻿{% extends 'news/base_news.html'%}
+
+	<h1>HI</h1>
+ 
+{% block title %}
+		
+	News
+{% endblock %}
+
+
+{% block content %}
+	<div class="features">
+	<style>
+		table {
+ 		 font-family: arial, sans-serif;
+ 		 border-collapse: collapse;
+ 		 width: 100%;
+		
+		}
+
+		td, th {
+  		border: 1px solid #dddddd;
+  		text-align: left;
+  		padding: 2px;
+		heigth: 5px;
+		}
+
+		tr:nth-child(even) {
+  		background-color: #dddddd;
+		}
+	</style>
+
+	<table>
+  		<tr>
+			 <th style="width:50%">Новость</th>
+  		 </tr>
+
+	{% for new in news_tags%}
+		<tr>
+		 <td style="font-size:80%;"><a href="{%url 'new_read_all_url' pk=new.id%}">{{new.title}}</td>
+		</tr>
+	{% endfor %}
+	
+	
+	</table>
+
+</div>
+{% endblock %} 
+
+	        
+<!--{flat.get_absolute_url}-->

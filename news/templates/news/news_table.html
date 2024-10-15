@@ -1,0 +1,18 @@
+﻿{% extends 'news/base_news.html'%}
+{% load rest_framework %}
+	<h1>HI</h1>
+ 
+{% block title %}
+	News Table
+{% endblock %}
+
+{% block content %}
+<div class="features">
+	<h1 class="mb-5" style="text-align: center">Новости</h1>
+
+	{%for new in news%}
+		{% include 'news/include/news_card_template.html' %}
+	{%endfor%}
+</div>
+{% endblock %} 
+

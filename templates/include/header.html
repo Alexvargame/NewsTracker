@@ -1,0 +1,105 @@
+﻿{% load news_tags %}
+<header class="header">
+             <nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;">
+   <div class="container-fluid">
+     <a class="navbar-brand" href="{% url 'main_page_url'%}">Home</a>
+     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+       <span class="navbar-toggler-icon"></span>
+     </button>
+     <!--{% if user.is_authenticated and user.is_staff%}
+		 <a class="navbar-brand" href="">Админ</a>
+		 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		   <span class="navbar-toggler-icon"></span>
+		 </button>
+       {%endif%}-->
+     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+		    {% if user.is_authenticated and user.is_staff%}
+		 <li class="nav-item dropdown">
+			  <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">Админ</a>
+			   <ul class="dropdown-menu">
+				   <li><a class="dropdown-item" href="{%url 'football_news_update_url' %}">Foolball news</a></li>
+				   <li><a class="dropdown-item" href="{%url 'hockey_news_update_url' %}">Hockey news</a></li>
+			   </ul>
+			</li>
+       		{%endif%}
+
+			<li class="nav-item dropdown">
+			  <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">Темы</a>
+			   <ul class="dropdown-menu">
+				   {% show_news_themes_menu %}
+			   </ul>
+			</li>
+			<li class="nav-item dropdown">
+			  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Календарь</a>
+		   <ul class="dropdown-menu">
+				<li><a class="dropdown-item" href="">Выбрать день</a></li>
+				<li><a class="dropdown-item" href="">Создать новый</a></li>
+
+		    </ul>
+			</li>
+        
+	<li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Учет расходов</a>
+	   <ul class="dropdown-menu">
+    		<li><a class="dropdown-item" href="">Выбрать день</a></li>
+			<div class="dropdown-divider"></div>
+				<li><a class="dropdown-item" href="">Категории</a></li>
+			<div class="dropdown-divider"></div>
+				<li style="font-size:100%;"><b>Расходы</b></li>
+			<div class="dropdown-divider"></div>
+				<li><a class="dropdown-item" href="">Все расходы</a></li>
+				<li><a class="dropdown-item" href="">Добавить расход</a></li>
+			    <li><a class="dropdown-item" href="">Добавить расходы</a></li>
+			<div class="dropdown-divider"></div>
+				<li style="font-size:100%;"><b>Отчеты</b></li>
+			<div class="dropdown-divider"></div>
+				<li><a class="dropdown-item" href="">Общий отчет</a></li>
+
+    		
+  	  </ul>
+	</li>
+	
+  	<li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Учет поступлений</a>
+	   <ul class="dropdown-menu">
+    		<li><a class="dropdown-item" href="">Выбрать день</a></li>
+		<div class="dropdown-divider"></div>
+		<li style="font-size:100%;"><b>Поступления</b></li>
+		<div class="dropdown-divider"></div>
+		<li><a class="dropdown-item" href="">Все поступления</a></li>
+		<li><a class="dropdown-item" href="">Добавить поступления</a></li>
+		<div class="dropdown-divider"></div>
+		<li style="font-size:100%;"><b>Отчеты</b></li>
+		<div class="dropdown-divider"></div>
+		<li><a class="dropdown-item" href=""">Общий отчет</a></li>
+
+    		
+  	  </ul>
+	</li>
+
+	{% if user.is_authenticated %}
+            	<a class="nav-item nav-link" href="{% url 'profile' %}">Профиль</a>
+            	<a class="nav-item nav-link" href="{% url 'logout' %}">Выход</a>
+          	{% else %}
+            	<a class="nav-item nav-link" href="{% url 'login' %}">Вход</a>
+            	<a class="nav-item nav-link" href="{% url 'register' %}">Регистрация</a>
+          {% endif %}
+ 
+
+     </div>
+   </div>
+	<form class="d-flex" role="search" action="">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+
+
+
+
+
+
+ </nav>
+
+            </header>
+

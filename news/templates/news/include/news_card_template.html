@@ -1,0 +1,18 @@
+
+<div class="card mb-4" style="width:100%;" >
+	      <div class="card-header">
+			  <p style="color:black;">{{new.date_pub}} </p>
+			  <a href="{%url 'news_author_url' username=new.author.username%}">{{new.author}} </a>
+  	      </div>
+  	      <div class="card-body"  style="color:black;">
+    		<h5 class="card-title">{{new.title}}</h5>
+    		<p class="card-text" style="text-align:justify;color:black;font-size:20px">{{new.body|truncatewords:15}}</p>
+    		<a href="{{new.read_all_url}}" class="btn btn-primary">Подробнее</a>
+		  </div>
+	      <div class="card-footer text-muted">
+   			 Tags:
+			 {% for tag in new.tags.all %}
+				<a href="{% url 'news_tags_list_url' pkk=tag.id%}">{{tag.title}}</a>
+			 {% endfor %}
+ 	      </div>
+</div>

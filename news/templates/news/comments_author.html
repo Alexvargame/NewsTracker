@@ -1,0 +1,55 @@
+﻿{% extends 'news/base_news.html'%}
+{% load rest_framework %}
+	<h1>HI</h1>
+ 
+{% block title %}
+	Comments for User
+{% endblock %}
+
+{% block content %}
+<h1 class="mb-5" style="text-align: center">Комментарии</h1>
+<div class="features">
+	<style>
+			table {
+			 font-family: arial, sans-serif;
+			 border-collapse: collapse;
+			 width: 100%;
+
+			}
+
+			td, th {
+			border: 1px solid #dddddd;
+			text-align: left;
+			padding: 2px;
+			heigth: 5px;
+			}
+
+			tr:nth-child(even) {
+			background-color: #dddddd;
+			}
+		</style>
+		 <h6 style="text-align:justify;color:black;font-size:25px">{{author}}</h6>
+		<table>
+				<tr>
+					<th style="width:10%">Новость</th>
+					<th style="width:3%">Название</th>
+					<th style="width:3%">Дата</th>
+					<th style="width:3%">Родитель</th>
+					<th style="width:30%">Текст</th>
+				</tr>
+			{% for com in comments%}
+				<tr>
+					<td style="font-size:80%;"><a href="{{com.news.read_all_url}}">{{com.news}}</a></td>
+					<td style="font-size:80%;">{{com.name}}</td>
+					<td style="font-size:80%;">{{com.date_create}}</td>
+					<td style="font-size:80%;">{{com.parent}}</td>
+					<td style="font-size:80%;">{{com.text}}</td>
+				</tr>
+
+			{% endfor %}
+
+
+		</table>
+</div>
+{% endblock %} 
+

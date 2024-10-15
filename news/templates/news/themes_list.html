@@ -1,0 +1,32 @@
+﻿{% extends 'news/base_news.html'%}
+  {% load mptt_tags %}
+	<h1>HI</h1>
+ 
+{% block title %}
+		
+	Themes
+{% endblock %}
+
+
+{% block content %}
+<div class="features">
+	
+
+<ul>
+    {% recursetree newsthemes %}
+        <li>	 
+            <a href="{{node.get_absolute_url}}">{{node.name}}</a>
+            {% if not node.is_leaf_node %}
+                <ul class="children">
+                   <a href="{{children.get_absolute_url}}"> {{ children }}</a>
+                </ul>
+            {% endif %}
+        </li>
+    {% endrecursetree %}
+</ul>
+	
+
+ <a class="btn btn-info" href="{% url 'news_theme_create_url'%}"  role="button">Новая тема</a>
+</div>
+{% endblock %} 
+
